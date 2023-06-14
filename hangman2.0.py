@@ -1,31 +1,48 @@
+
+import tkinter
 import random
 
-slova = ["zelene", "zvarac", "tomas", "jaro", "adam"]
+stop = False
+person_1 = []
 
-slovo = random.choice(slova)
 
-pokusy = len(slovo)
+slova = ["zajo", "zvarac", "samo", "tomas", "adam"]
 
-print(slovo)
+for pismeno in random.choice(slova):
 
-pismenko = 0
+    person_1.append(pismeno)
 
-while pokusy != 0:
 
-    pokusy -= 1
 
-    zadane_slovo = input("Hadaj slovo: ")
+guess = ['*'] * len(person_1)
 
-    if zadane_slovo != slovo:
+split_guess = ''.join(person_1)
 
-        print("neuhadol si!")
+x = -1
 
-        print(slovo[pismenko])
-        pismenko += 1
+while len(guess) > x+1:
+    
+    x += 1
 
-    else:
+
+
+    print(f"\nHadaj slovo {guess}")
+    guess_input = input("PISMENO: ")
+
+
+    if split_guess == guess_input:
 
         print("uhadol si!")
 
-        pokusy = 0
+        x = len(guess)+1
+
+    elif guess_input is None or len(guess_input.strip()) == 0:
+
+        guess[x] = person_1[x]
+
+
+        print("neuhadol si!")
+
+
+print(f'slovo bolo {person_1}')
 
